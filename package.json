@@ -3,10 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "eslint"
+    "dev": "bun --bun next dev",
+    "build": "bun --bun next build",
+    "start": "bun --bun next start",
+    "db:generate": "bunx drizzle-kit generate",
+    "db:migrate": "bunx drizzle-kit migrate",
+    "db:studio": "bunx drizzle-kit studio",
+    "db:up": "docker compose up -d",
+    "db:down": "docker compose down",
+    "test": "bun test",
+    "lint": "bunx next lint",
+    "typecheck": "bunx tsc --noEmit"
   },
   "dependencies": {
     "drizzle-orm": "^0.45.1",
