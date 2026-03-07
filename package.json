@@ -12,7 +12,7 @@
     "db:up": "docker compose up -d",
     "db:down": "docker compose down",
     "test": "bun test",
-    "lint": "bunx next lint",
+    "lint": "eslint . --max-warnings 0",
     "typecheck": "bunx tsc --noEmit"
   },
   "dependencies": {
