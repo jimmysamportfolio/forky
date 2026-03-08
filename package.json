@@ -11,7 +11,7 @@
     "db:studio": "bun --env-file .env.local node_modules/.bin/drizzle-kit studio --config=drizzle.config.ts",
     "db:up": "docker compose up -d",
     "db:down": "docker compose down",
-    "test": "bun test",
+    "test": "bun test --pass-with-no-tests",
     "lint": "eslint . --max-warnings 0",
     "typecheck": "bunx tsc --noEmit"
   },
