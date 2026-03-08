@@ -22,6 +22,6 @@ export class ValidationError extends BaseError {
       message: issue.message,
     }));
 
-    return new ValidationError("Validation failed", issues);
+    return new ValidationError(`Validation failed: ${zodError.message}`, issues);
   }
 }
