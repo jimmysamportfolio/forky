@@ -1,5 +1,4 @@
 import type { z } from "zod/v4";
-import type { APIError } from "../api";
 import { BaseError } from "./base.error";
 
 export interface ValidationIssue {
@@ -10,11 +9,9 @@ export interface ValidationIssue {
 export class ValidationError extends BaseError {
   readonly statusCode = 400;
   readonly errorCode = "VALIDATION_FAILED";
-  readonly issues: ValidationIssue[];
 
   constructor(message: string, issues: ValidationIssue[]) {
-    super(message);
-    this.issues = issues;
+    super(message, { issues });
   }
 
   static fromZod(zodError: z.ZodError): ValidationError {
@@ -26,15 +23,5 @@ export class ValidationError extends BaseError {
     }));
 
     return new ValidationError("Validation failed", issues);
-  }
-
-  override toAPIError(): APIError {
-    return {
-      ...super.toAPIError(),
-      details: {
-        ...this.details,
-        issues: this.issues,
-      },
-    };
   }
 }
