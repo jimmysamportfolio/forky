@@ -12,7 +12,9 @@ export abstract class BaseError extends Error {
     this.timestamp = new Date().toISOString();
     this.details = details;
 
-    Error.captureStackTrace(this, this.constructor);
+    if (Error.captureStackTrace) {
+      Error.captureStackTrace(this, this.constructor);
+    }
   }
 
   toAPIError(): APIError {
